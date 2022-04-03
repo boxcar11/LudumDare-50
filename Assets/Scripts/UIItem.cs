@@ -16,6 +16,8 @@ public class UIItem : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, 
     public bool craftedItemSlot = false;
     public bool bodyItemSlot = false;
 
+    public GameObject campfirePrefab;
+
     private void Awake()
     {
         craftingSlots = FindObjectOfType<CraftingSlots>();
@@ -41,6 +43,15 @@ public class UIItem : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, 
         if (craftingSlot)
         {
             craftingSlots.UpdateRecipe();
+        }
+        if (bodyItemSlot && item != null)
+        {
+            if (item.id == 12)
+            {
+                Debug.Log("Starting fire");
+                Instantiate(campfirePrefab, GameObject.Find("Player").transform.position, Quaternion.identity);
+                UpdateItem(null);
+            }
         }
     }
 

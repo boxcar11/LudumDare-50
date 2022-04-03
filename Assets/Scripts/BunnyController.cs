@@ -5,7 +5,7 @@ using UnityEngine;
 public class BunnyController : AnimalController
 {
     Vector3 wanderPoint;
-    
+
     [SerializeField] float moveSpeed;
 
     // Start is called before the first frame update
@@ -17,11 +17,20 @@ public class BunnyController : AnimalController
     // Update is called once per frame
     void Update()
     {
-            transform.position = Vector3.MoveTowards(this.transform.position, wanderPoint, moveSpeed * Time.deltaTime);
+        if (this.transform.position.x - wanderPoint.x < 0)
+        {
+            GetComponentInChildren<SpriteRenderer>().flipX = false;
+        }
+        else
+        {
+            GetComponentInChildren<SpriteRenderer>().flipX = true;
+        }
+        
+        transform.position = Vector3.MoveTowards(this.transform.position, wanderPoint, moveSpeed * Time.deltaTime);
 
-            if(Vector3.Distance(transform.position, wanderPoint) < 0.001f)
-            {
-                wanderPoint = Wander();
-            }
+        if (Vector3.Distance(transform.position, wanderPoint) < 0.001f)
+        {
+            wanderPoint = Wander();
+        }
     }
 }

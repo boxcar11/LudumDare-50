@@ -1,16 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FishingController : Interactable
 {
-    private Inventory inventory;
     public Sprite fishLeft, fishRight, fishUp, fishDown;
     public Sprite fishEmote;
     public SpriteRenderer sr;
     public SpriteRenderer emote;
-
-    public SlotPanel slotPanel;
 
     public int fishingPoleID;
     private bool fishing = false;
@@ -53,7 +51,8 @@ public class FishingController : Interactable
     {
         if (slotPanel.GetComponentInChildren<UIItem>().CheckForItem() == fishingPoleID)
         {
-            hintText.transform.parent.gameObject.SetActive(false);
+            hintText.transform.parent.GetComponent<Image>().enabled = false;
+            hintText.enabled = false;
 
             if (fishing == false)
             {
@@ -107,12 +106,14 @@ public class FishingController : Interactable
         }
         else if (slotPanel.GetComponentInChildren<UIItem>().CheckForItem() == 10)
         {
-            hintText.transform.parent.gameObject.SetActive(false);
+            hintText.transform.parent.GetComponent<Image>().enabled = false;
+            hintText.enabled = false;
             inventory.GiveItem("Murky water");
         }
         else
         {
-            hintText.transform.parent.gameObject.SetActive(true);
+            hintText.transform.parent.GetComponent<Image>().enabled = true;
+            hintText.enabled = true;
             hintText.text = "If only I had a Fishing pole or a Bucket";
         }
     }

@@ -11,7 +11,6 @@ public class BushController : Interactable
     private bool pickable = true;
     private float timer;
     [SerializeField] float pickableTime = 60;
-    private Inventory inventory;
 
     void Start()
     {

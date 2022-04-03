@@ -9,6 +9,7 @@ public class InputManager : MonoBehaviour
     [SerializeField] private GameObject craftedItemPanel;
     [SerializeField] private GameObject bodyPanel;
     [SerializeField] private GameObject menuPanel;
+    [SerializeField] private GameObject tooltip;
 
     Interactable interactable;
 
@@ -30,11 +31,21 @@ public class InputManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.I))
         {
             inventoryBool = !inventoryBool;
+
+            if(inventoryBool == false)
+            {
+                TurnOffToolTip();
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.C))
         {
             craftingBool = !craftingBool;
+
+            if(craftingBool == false)
+            {
+                TurnOffToolTip();
+            }
         }
 
         if (Input.GetButton("Action"))
@@ -62,6 +73,11 @@ public class InputManager : MonoBehaviour
         craftingPanel.SetActive(craftingBool);
         craftedItemPanel.SetActive(craftingBool);
         menuPanel.SetActive(menuBool);
+    }
+
+    void TurnOffToolTip()
+    {
+        tooltip.SetActive(false);
     }
 
     public void SetInteractable(Interactable i)

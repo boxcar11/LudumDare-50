@@ -1,15 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TreeController : Interactable
 {
     [SerializeField] private int treeHealth;
 
-    private Inventory inventory;
     private AudioSource audioSource;
-
-    public SlotPanel slotPanel;
 
     void Start()
     {
@@ -20,10 +18,10 @@ public class TreeController : Interactable
     public override void Interact()
     {
         int itemID = slotPanel.GetComponentInChildren<UIItem>().CheckForItem();
-        Debug.Log(itemID);
         if (itemID == 7)
         {
-            hintText.transform.parent.gameObject.SetActive(false);
+            hintText.transform.parent.GetComponent<Image>().enabled = false;
+            hintText.enabled = false;
             treeHealth -= 1;
 
             audioSource.Play();
@@ -36,7 +34,8 @@ public class TreeController : Interactable
         }
         else
         {
-            hintText.transform.parent.gameObject.SetActive(true);
+           hintText.transform.parent.GetComponent<Image>().enabled = true;
+            hintText.enabled = true;
             hintText.text = "If only I had an Axe";
         }
     }

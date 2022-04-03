@@ -92,6 +92,7 @@ MonoBehaviour:
   craftingSlot: 0
   craftedItemSlot: 0
   bodyItemSlot: 1
+  campfirePrefab: {fileID: 9033422639238120775, guid: e0e788c3783281d4299771c1abf33798, type: 3}
 --- !u!114 &3525951607296493419
 MonoBehaviour:
   m_ObjectHideFlags: 0
