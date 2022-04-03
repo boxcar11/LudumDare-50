@@ -24,11 +24,7 @@ public class Interactable : MonoBehaviour
     void OnTriggerExit2D()
     {
         inputManager.SetInteractable(null);
-        GameObject panelImage = hintText.gameObject;
-        if (panelImage != null)
-        {
-           panelImage.transform.parent.GetComponent<Image>().enabled = false;
-        }
+        hintText.gameObject.transform.parent.GetComponent<Image>().enabled = false;   
         hintText.enabled = false;
     }
 

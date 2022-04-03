@@ -48,6 +48,7 @@ public class PlayerController : MonoBehaviour
         else if (other.gameObject.tag == "Wolf")
         {
             FindObjectOfType<GameManager>().RemoveHealth(10);
+            other.gameObject.GetComponent<AudioSource>().Play();
         }
     }
 }

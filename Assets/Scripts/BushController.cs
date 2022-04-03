@@ -12,6 +12,7 @@ public class BushController : Interactable
     private float timer;
     [SerializeField] float pickableTime = 60;
 
+
     void Start()
     {
         inventory = FindObjectOfType<Inventory>();

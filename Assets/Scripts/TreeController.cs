@@ -13,6 +13,8 @@ public class TreeController : Interactable
     {
         inventory = FindObjectOfType<Inventory>();
         audioSource = GetComponent<AudioSource>();
+        hintText.gameObject.transform.parent.GetComponent<Image>().enabled = false;   
+        hintText.enabled = false;
     }
 
     public override void Interact()
