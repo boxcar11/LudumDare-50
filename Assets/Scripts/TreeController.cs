@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class TreeController : Interactable
 {
@@ -13,6 +14,8 @@ public class TreeController : Interactable
     {
         inventory = FindObjectOfType<Inventory>();
         audioSource = GetComponent<AudioSource>();
+        slotPanel = GameObject.Find("Holding Panel").GetComponent<SlotPanel>();
+        hintText = GameObject.Find("Hint").GetComponent<TMP_Text>();  
         hintText.gameObject.transform.parent.GetComponent<Image>().enabled = false;   
         hintText.enabled = false;
     }
