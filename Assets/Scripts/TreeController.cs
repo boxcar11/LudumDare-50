@@ -9,6 +9,8 @@ public class TreeController : Interactable
     private Inventory inventory;
     private AudioSource audioSource;
 
+    public SlotPanel slotPanel;
+
     void Start()
     {
         inventory = FindObjectOfType<Inventory>();
@@ -17,14 +19,25 @@ public class TreeController : Interactable
 
     public override void Interact()
     {
-        treeHealth -= 1;
-
-        audioSource.Play();
-
-        if(treeHealth <= 0)
+        int itemID = slotPanel.GetComponentInChildren<UIItem>().CheckForItem();
+        Debug.Log(itemID);
+        if (itemID == 7)
         {
-            inventory.GiveItem("Wood");
-            Destroy(this.gameObject);
+            hintText.transform.parent.gameObject.SetActive(false);
+            treeHealth -= 1;
+
+            audioSource.Play();
+
+            if (treeHealth <= 0)
+            {
+                inventory.GiveItem("Wood");
+                Destroy(this.gameObject);
+            }
+        }
+        else
+        {
+            hintText.transform.parent.gameObject.SetActive(true);
+            hintText.text = "If only I had an Axe";
         }
     }
 }

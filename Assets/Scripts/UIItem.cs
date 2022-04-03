@@ -23,13 +23,13 @@ public class UIItem : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, 
         selectedItem = GameObject.Find("Selected Item").GetComponent<UIItem>();
         spriteImage = GetComponent<Image>();
         UpdateItem(null);
- 
-   }
+
+    }
 
     public void UpdateItem(Item item)
     {
         this.item = item;
-        if(this.item != null)
+        if (this.item != null)
         {
             spriteImage.color = Color.white;
             spriteImage.sprite = item.icon;
@@ -38,7 +38,7 @@ public class UIItem : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, 
         {
             spriteImage.color = Color.clear;
         }
-        if(craftingSlot)
+        if (craftingSlot)
         {
             craftingSlots.UpdateRecipe();
         }
@@ -46,32 +46,32 @@ public class UIItem : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, 
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        if(this.item != null)
+        if (this.item != null)
         {
-            if(selectedItem.item != null && !craftedItemSlot && !bodyItemSlot)
+            if (selectedItem.item != null && !craftedItemSlot && !bodyItemSlot)
             {
                 Item clone = new Item(selectedItem.item);
                 selectedItem.UpdateItem(this.item);
                 UpdateItem(clone);
             }
-            else if(selectedItem.item == null)
+            else if (selectedItem.item == null)
             {
                 selectedItem.UpdateItem(this.item);
-                if(craftedItemSlot)
+                if (craftedItemSlot)
                 {
                     GetComponent<UICraftResult>().CollectCraftResult(this.item);
                 }
-                
+
                 UpdateItem(null);
             }
-           
+
         }
-        else if(selectedItem.item != null && !craftedItemSlot)
+        else if (selectedItem.item != null && !craftedItemSlot)
         {
-            
+
             UpdateItem(selectedItem.item);
             selectedItem.UpdateItem(null);
-            if(bodyItemSlot)
+            if (bodyItemSlot)
             {
                 GetComponent<UIBody>().feedBody(this.item);
             }
@@ -81,7 +81,7 @@ public class UIItem : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, 
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if(this.item != null)
+        if (this.item != null)
         {
             tooltip.GenerateTooltip(item);
         }
@@ -94,6 +94,13 @@ public class UIItem : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, 
 
     public int CheckForItem()
     {
-        return item.id;
+        if (item != null)
+        {
+            return item.id;
+        }
+        else
+        {
+            return 0;
+        }
     }
 }

@@ -53,6 +53,8 @@ public class FishingController : Interactable
     {
         if (slotPanel.GetComponentInChildren<UIItem>().CheckForItem() == fishingPoleID)
         {
+            hintText.transform.parent.gameObject.SetActive(false);
+
             if (fishing == false)
             {
                 castTimer = Random.Range(2f, 10f);
@@ -67,7 +69,7 @@ public class FishingController : Interactable
                 {
                     degree = 360 + degree;
                 }
-                Debug.Log(degree);
+                //Debug.Log(degree);
                 float absoluteX = Mathf.Abs(direction.x);
                 float absoluteY = Mathf.Abs(direction.y);
 
@@ -93,7 +95,7 @@ public class FishingController : Interactable
                 //Reel in line
                 if (fishOnLine)
                 {
-                    inventory.GiveItem("Berry");
+                    inventory.GiveItem("Fish");
                 }
 
                 fishOnLine = false;
@@ -102,6 +104,16 @@ public class FishingController : Interactable
 
                 sr.GetComponent<Animator>().enabled = true;
             }
+        }
+        else if (slotPanel.GetComponentInChildren<UIItem>().CheckForItem() == 10)
+        {
+            hintText.transform.parent.gameObject.SetActive(false);
+            inventory.GiveItem("Murky water");
+        }
+        else
+        {
+            hintText.transform.parent.gameObject.SetActive(true);
+            hintText.text = "If only I had a Fishing pole or a Bucket";
         }
     }
 }

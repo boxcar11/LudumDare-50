@@ -75,6 +75,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void RemoveHealth(float h)
+    {
+        health -= h;
+    }
+
     public void RestartLevel()
     {
         SceneManager.LoadScene(0);

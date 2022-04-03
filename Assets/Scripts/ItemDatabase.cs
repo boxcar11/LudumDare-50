@@ -30,9 +30,11 @@ public class ItemDatabase : MonoBehaviour
             new Item(3, "Raw Rabbit", "Cook before eating", new Dictionary<string, int>()),
             new Item(4, "Berry", "Berry greatness", new Dictionary<string, int>{{"Food", 5}}),
             new Item(5, "Murky water", "Doesn't look good enough to drink", new Dictionary<string, int>{{"Water", -10}}),
-            new Item(6, "Water", "Clear fresh water", new Dictionary<string, int>{{"Water", 5}}),
+            new Item(6, "Water", "Clear fresh water", new Dictionary<string, int>{{"Water", 10}}),
             new Item(7, "Axe", "Careful sharp", new Dictionary<string, int>()),
-            new Item(8, "Fishing Pole", "Here fishy fishy", new Dictionary<string, int>())
+            new Item(8, "Fishing Pole", "Here fishy fishy", new Dictionary<string, int>()),
+            new Item(9, "Fish", "Eww it's slimey", new Dictionary<string, int>{{"Food", 5}}),
+            new Item(10, "Bucket", "Holds fluid", new Dictionary<string, int>())
         };
     }
 }
