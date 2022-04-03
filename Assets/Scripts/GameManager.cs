@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
     public Slider thirstSlider;
     public GameObject bunnyPrefab;
 
+    public GameObject gameOverPanel;
+
     [SerializeField] private float health, hunger, thirst;
 
     [SerializeField] private float hungerRate, thirstRate;
@@ -24,6 +26,7 @@ public class GameManager : MonoBehaviour
         health = 100;
         hunger = 100;
         thirst = 100;
+        Time.timeScale = 1;
     }
 
     // Update is called once per frame
@@ -54,6 +57,12 @@ public class GameManager : MonoBehaviour
         {
             animalTimer = animalreleaseTimer;
             Instantiate(bunnyPrefab, new Vector3(Random.Range(-20, 20), Random.Range(-20, 20), 0) ,Quaternion.identity);
+        }
+
+        if(health <= 0)
+        {
+            Time.timeScale = 0;
+            gameOverPanel.SetActive(true);
         }
     }
 

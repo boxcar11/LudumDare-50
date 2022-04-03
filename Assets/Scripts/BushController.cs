@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class BushController : Interactable
 {
@@ -16,6 +17,7 @@ public class BushController : Interactable
     void Start()
     {
         inventory = FindObjectOfType<Inventory>();
+        hintText = GameObject.Find("Hint").GetComponent<TMP_Text>(); 
     }
 
     void Update()
