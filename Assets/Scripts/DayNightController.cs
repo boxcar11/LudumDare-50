@@ -12,19 +12,14 @@ public class DayNightController : MonoBehaviour
     public Color dayColor = new Color(1.0f,1.0f,1.0f);
     public Color nightColor = new Color(.25f,.25f,.6f);
 
-    private Light2D light2d;
+    [SerializeField] private Light2D light2d;
 
     public bool daytime { get; private set;}
     private float timeRemaining;
     private float colorTimer;
 
     private bool transitioning = false;
-
-    void Start()
-    {
-        light2d = FindObjectOfType<Light2D>();
-    }
-
+    
     void Update()
     {
         timeRemaining -= Time.deltaTime;

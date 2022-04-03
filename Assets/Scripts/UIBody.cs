@@ -14,19 +14,22 @@ public class UIBody : MonoBehaviour
     {
         //Debug.Log(item.title);
         //Debug.Log("Feeding Body");
-        foreach (var stat in item.stats)
+        if (item != null)
         {
-            if(stat.Key == "Food")
+            foreach (var stat in item.stats)
             {
-                gameManager.AddFood(stat.Value);
-                GetComponentInParent<SlotPanel>().RemoveItem(item);   
-            }
+                if (stat.Key == "Food")
+                {
+                    gameManager.AddFood(stat.Value);
+                    GetComponentInParent<SlotPanel>().RemoveItem(item);
+                }
 
-            if(stat.Key == "Water")
-            {
-                gameManager.AddWater(stat.Value);
-                GetComponentInParent<SlotPanel>().RemoveItem(item);
+                if (stat.Key == "Water")
+                {
+                    gameManager.AddWater(stat.Value);
+                    GetComponentInParent<SlotPanel>().RemoveItem(item);
+                }
             }
-        } 
+        }
     }
 }

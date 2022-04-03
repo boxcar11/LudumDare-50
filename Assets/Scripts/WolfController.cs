@@ -2,11 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BunnyController : AnimalController
+public class WolfController : AnimalController
 {
     Vector3 wanderPoint;
 
     [SerializeField] float moveSpeed;
+
+    private bool chasePlayer;
+
+    private GameObject player;
 
     // Start is called before the first frame update
     void Start()
@@ -14,10 +18,14 @@ public class BunnyController : AnimalController
         wanderPoint = Wander();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (this.transform.position.x - wanderPoint.x < 0)
+        if (chasePlayer)
+        {
+            wanderPoint = player.transform.position;
+        }
+
+        if(this.transform.position.x - wanderPoint.x < 0)
         {
             GetComponentInChildren<SpriteRenderer>().flipX = false;
         }
@@ -25,12 +33,27 @@ public class BunnyController : AnimalController
         {
             GetComponentInChildren<SpriteRenderer>().flipX = true;
         }
-        
+
         transform.position = Vector3.MoveTowards(this.transform.position, wanderPoint, moveSpeed * Time.deltaTime);
 
         if (Vector3.Distance(transform.position, wanderPoint) < 0.001f)
         {
             wanderPoint = Wander();
         }
+    }
+
+    void OnTriggerEnter2D(Collider2D collider)
+    {
+        if (collider.gameObject.tag == "Player")
+        {
+            chasePlayer = true;
+            player = collider.gameObject;
+        }
+    }
+
+    void OnTriggerExit2D()
+    {
+        wanderPoint = Wander();
+        chasePlayer = false;
     }
 }

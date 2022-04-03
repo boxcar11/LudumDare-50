@@ -1,16 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FishingController : Interactable
 {
-    private Inventory inventory;
     public Sprite fishLeft, fishRight, fishUp, fishDown;
     public Sprite fishEmote;
     public SpriteRenderer sr;
     public SpriteRenderer emote;
-
-    public SlotPanel slotPanel;
 
     public int fishingPoleID;
     private bool fishing = false;
@@ -53,6 +51,9 @@ public class FishingController : Interactable
     {
         if (slotPanel.GetComponentInChildren<UIItem>().CheckForItem() == fishingPoleID)
         {
+            hintText.transform.parent.GetComponent<Image>().enabled = false;
+            hintText.enabled = false;
+
             if (fishing == false)
             {
                 castTimer = Random.Range(2f, 10f);
@@ -67,7 +68,7 @@ public class FishingController : Interactable
                 {
                     degree = 360 + degree;
                 }
-                Debug.Log(degree);
+                //Debug.Log(degree);
                 float absoluteX = Mathf.Abs(direction.x);
                 float absoluteY = Mathf.Abs(direction.y);
 
@@ -93,7 +94,7 @@ public class FishingController : Interactable
                 //Reel in line
                 if (fishOnLine)
                 {
-                    inventory.GiveItem("Berry");
+                    inventory.GiveItem("Fish");
                 }
 
                 fishOnLine = false;
@@ -102,6 +103,18 @@ public class FishingController : Interactable
 
                 sr.GetComponent<Animator>().enabled = true;
             }
+        }
+        else if (slotPanel.GetComponentInChildren<UIItem>().CheckForItem() == 10)
+        {
+            hintText.transform.parent.GetComponent<Image>().enabled = false;
+            hintText.enabled = false;
+            inventory.GiveItem("Murky water");
+        }
+        else
+        {
+            hintText.transform.parent.GetComponent<Image>().enabled = true;
+            hintText.enabled = true;
+            hintText.text = "If only I had a Fishing pole or a Bucket";
         }
     }
 }
