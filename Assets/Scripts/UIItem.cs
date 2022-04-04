@@ -15,6 +15,7 @@ public class UIItem : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, 
 
     public bool craftedItemSlot = false;
     public bool bodyItemSlot = false;
+    public bool destroySlot = false;
 
     public GameObject campfirePrefab;
 
@@ -52,6 +53,10 @@ public class UIItem : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, 
                 Instantiate(campfirePrefab, GameObject.Find("Player").transform.position, Quaternion.identity);
                 UpdateItem(null);
             }
+        }
+        if(destroySlot && item != null)
+        {
+            UpdateItem(null);
         }
     }
 

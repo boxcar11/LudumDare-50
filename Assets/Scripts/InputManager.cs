@@ -69,9 +69,8 @@ public class InputManager : MonoBehaviour
         }
 
         inventoryPanel.SetActive(inventoryBool);
-        bodyPanel.SetActive(inventoryBool);
-        craftingPanel.SetActive(craftingBool);
-        craftedItemPanel.SetActive(craftingBool);
+        craftingPanel.SetActive(inventoryBool);
+        craftedItemPanel.SetActive(inventoryBool);
         menuPanel.SetActive(menuBool);
     }
 

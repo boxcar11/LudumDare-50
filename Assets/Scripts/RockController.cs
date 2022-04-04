@@ -20,5 +20,6 @@ public class RockController : Interactable
     public override void Interact()
     {
         inventory.GiveItem(11);
+        Destroy(this.gameObject);
     }
 }
