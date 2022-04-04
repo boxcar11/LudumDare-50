@@ -36,7 +36,9 @@ public class ItemDatabase : MonoBehaviour
             new Item(9, "Fish", "Eww it's slimey", new Dictionary<string, int>{{"Food", 5}}),
             new Item(10, "Bucket", "Holds fluid", new Dictionary<string, int>()),
             new Item(11, "Rock", "Very hard", new Dictionary<string, int>()),
-            new Item(12, "Campfire", "Caution Hot", new Dictionary<string, int>())
+            new Item(12, "Campfire", "Caution Hot", new Dictionary<string, int>()),
+            new Item(13, "Wire", "Bendy", new Dictionary<string, int>()),
+            new Item(14, "Metal", "Shiny", new Dictionary<string, int>())
         };
     }
 }
