@@ -16,5 +16,6 @@ public class TrainController : Interactable
     {
         inventory.GiveItem("Scrap Metal");
         inventory.GiveItem("Wire");
+        pickupSound.Play();
     }
 }
