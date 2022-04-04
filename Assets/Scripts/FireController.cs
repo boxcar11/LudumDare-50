@@ -6,6 +6,7 @@ using TMPro;
 
 public class FireController : Interactable
 {
+    private float timer = 60;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,7 +19,12 @@ public class FireController : Interactable
     // Update is called once per frame
     void Update()
     {
+        timer -= Time.deltaTime;
 
+        if(timer <= 0)
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     public override void Interact()

@@ -5,10 +5,12 @@ using UnityEngine;
 public class UIBody : MonoBehaviour
 {
     [SerializeField] GameManager gameManager;
+    private Inventory inventory;
 
     void Start()
     {
         gameManager = FindObjectOfType<GameManager>();
+        inventory = FindObjectOfType<Inventory>();
     }
     public void feedBody(Item item)
     {
@@ -28,6 +30,7 @@ public class UIBody : MonoBehaviour
                 {
                     gameManager.AddWater(stat.Value);
                     GetComponentInParent<SlotPanel>().RemoveItem(item);
+                    inventory.GiveItem(10);
                 }
             }
         }

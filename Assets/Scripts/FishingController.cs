@@ -109,6 +109,7 @@ public class FishingController : Interactable
             hintText.transform.parent.GetComponent<Image>().enabled = false;
             hintText.enabled = false;
             inventory.GiveItem("Murky water");
+            slotPanel.EmptyAllSlots();
         }
         else
         {

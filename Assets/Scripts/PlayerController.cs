@@ -31,8 +31,6 @@ public class PlayerController : MonoBehaviour
             GetComponentInChildren<Animator>().SetFloat("MoveY", vertical);
         }
 
-
-
         Vector2 direction = new Vector2(horizontal, vertical);
         transform.Translate(direction * moveSpeed * Time.deltaTime);
     }
