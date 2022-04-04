@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,6 +13,9 @@ public class GameManager : MonoBehaviour
     public GameObject bunnyPrefab;
 
     public GameObject gameOverPanel;
+    public TMP_Text gameoverText;
+
+    public GameObject wolfPrefab;
 
     [SerializeField] private float health, hunger, thirst;
 
@@ -19,6 +23,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private float animalreleaseTimer;
     private float animalTimer;
+    float timer;
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +32,8 @@ public class GameManager : MonoBehaviour
         hunger = 100;
         thirst = 100;
         Time.timeScale = 1;
+
+        
     }
 
     // Update is called once per frame
@@ -62,7 +69,19 @@ public class GameManager : MonoBehaviour
         if(health <= 0)
         {
             Time.timeScale = 0;
+            string minSec = string.Format("{0}:{1:00}", (int)timer / 60, (int)timer % 60);
+            gameoverText.text = "You survived " + minSec;
             gameOverPanel.SetActive(true);
+        }
+
+        timer += Time.deltaTime;
+
+        if(timer >= 600)
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                Instantiate(wolfPrefab, new Vector3(Random.Range(-100, 100),Random.Range(-100,100),0), Quaternion.identity);
+            }
         }
     }
 
