@@ -30,11 +30,33 @@ public class CraftRecipeDatabase : MonoBehaviour
     {
         recipes = new List<CraftRecipe>()
         {
+            // Campfire
             new CraftRecipe(12, new int[]
             {
                 0, 0, 0,
                 0, 1, 0,
                 11, 11, 11
+            }),
+            // Axe
+            new CraftRecipe(7, new int[]
+            {
+                0,1,11,
+                0,1,0,
+                0,1,0
+            }),
+            // Fishing Pole
+            new CraftRecipe(8, new int[]
+            {
+                0,0,13,
+                0,1,0,
+                1,0,0
+            }),
+            // Bucket
+            new CraftRecipe(7, new int[]
+            {
+                0,0,0,
+                14,0,14,
+                14,14,14
             })
         };
     }
