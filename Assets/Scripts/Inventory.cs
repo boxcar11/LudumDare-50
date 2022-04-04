@@ -15,15 +15,7 @@ public class Inventory : MonoBehaviour
 
     void Start()
     {
-        GiveItem(1);
-        GiveItem(3);
-        GiveItem(5);
-        GiveItem(7);
-        GiveItem(8);
-        GiveItem(10);
-        GiveItem(11);
-        GiveItem(11);
-        GiveItem(11);
+
     }
 
 
