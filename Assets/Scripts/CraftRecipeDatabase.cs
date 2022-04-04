@@ -52,7 +52,7 @@ public class CraftRecipeDatabase : MonoBehaviour
                 1,0,0
             }),
             // Bucket
-            new CraftRecipe(7, new int[]
+            new CraftRecipe(10, new int[]
             {
                 0,0,0,
                 14,0,14,

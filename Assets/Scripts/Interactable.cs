@@ -17,6 +17,7 @@ public class Interactable : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
+            Debug.Log("Triggering");
             inputManager.SetInteractable(this);
         }
     }

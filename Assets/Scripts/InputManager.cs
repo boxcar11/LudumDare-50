@@ -11,7 +11,7 @@ public class InputManager : MonoBehaviour
     [SerializeField] private GameObject menuPanel;
     [SerializeField] private GameObject tooltip;
 
-    Interactable interactable;
+    [SerializeField] private Interactable interactable;
 
     private bool inventoryBool = false;
     private bool craftingBool = false;

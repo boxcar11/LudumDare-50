@@ -67,12 +67,12 @@ public class CraftHelper : MonoBehaviour
     {
         craftSlots[0].sprite = sprites[0];
         craftSlots[1].sprite = sprites[0];
-        craftSlots[2].sprite = sprites[2];
+        craftSlots[2].sprite = sprites[5];
         craftSlots[3].sprite = sprites[0];
-        craftSlots[4].sprite = sprites[4];
+        craftSlots[4].sprite = sprites[1];
         craftSlots[5].sprite = sprites[0];
-        craftSlots[6].sprite = sprites[0];
-        craftSlots[7].sprite = sprites[4];
+        craftSlots[6].sprite = sprites[1];
+        craftSlots[7].sprite = sprites[0];
         craftSlots[8].sprite = sprites[0];
     }
 }
