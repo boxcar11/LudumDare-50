@@ -18,6 +18,7 @@ public class LogPickup : Interactable
     public override void Interact()
     {
         inventory.GiveItem("Wood");
+        pickupSound.Play();
         Destroy(this.gameObject);
     }
 }

@@ -95,6 +95,7 @@ public class FishingController : Interactable
                 if (fishOnLine)
                 {
                     inventory.GiveItem("Fish");
+                    pickupSound.Play();
                 }
 
                 fishOnLine = false;
@@ -109,6 +110,7 @@ public class FishingController : Interactable
             hintText.transform.parent.GetComponent<Image>().enabled = false;
             hintText.enabled = false;
             inventory.GiveItem("Murky water");
+            pickupSound.Play();
             slotPanel.EmptyAllSlots();
         }
         else

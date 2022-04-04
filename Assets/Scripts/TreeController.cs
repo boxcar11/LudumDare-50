@@ -34,6 +34,7 @@ public class TreeController : Interactable
             if (treeHealth <= 0)
             {
                 inventory.GiveItem("Wood");
+                pickupSound.Play();
                 Destroy(this.gameObject);
             }
         }

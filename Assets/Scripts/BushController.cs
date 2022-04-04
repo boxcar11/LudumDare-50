@@ -42,6 +42,7 @@ public class BushController : Interactable
             for (int i = 0; i < numberOfBerries; i++)
             {
                 inventory.GiveItem("Berry");
+                pickupSound.Play();
             }
 
             pickable = false;
